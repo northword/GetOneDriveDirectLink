@@ -53,6 +53,7 @@ h1 {
 	margin: auto;
 	cursor: pointer;
 	background-color: rgb(9, 74, 178);
+	margin: 2px;
 }
 
 .mask-list {
@@ -98,6 +99,7 @@ h1 {
 	line-height: 25px;
 	background-color: lightblue;
 	margin-bottom: 10px;
+	padding-left: 3px;
 }
 
 .outcontent {
@@ -125,25 +127,36 @@ img {
 }
 
 .tooltip {
-    /* position: relative; */
-    /* display: inline-block; */
-    border-bottom: 1px dotted black; /* 悬停元素上显示点线 */
+	/* position: relative; */
+	/* display: inline-block; */
+	border-bottom: 1px dotted black;
+	/* 悬停元素上显示点线 */
 }
 
 .tooltip .tooltiptext {
-    visibility: hidden;
-    width: auto;
-    background-color: black;
-    color: #fff;
-    /* text-align: center; */
-    border-radius: 6px;
-    padding: 5px 5px;
+	visibility: hidden;
+	width: auto;
+	background-color: black;
+	color: #fff;
+	/* text-align: center; */
+	border-radius: 6px;
+	padding: 5px 5px;
 
-    /* 定位 */
-    position: absolute;
-    z-index: 1;
+	/* 定位 */
+	position: absolute;
+	z-index: 1;
 }
 
 .tooltip:hover .tooltiptext {
-    visibility: visible;
+	visibility: visible;
+}
+
+@media screen and (max-width: 1000px) {
+	.picker {
+		width: 100%;
+	}
+
+	.output {
+		width: 100%;
+	}
 }
