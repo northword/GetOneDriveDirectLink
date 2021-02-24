@@ -22,7 +22,7 @@ h1 {
 	text-align: center;
 }
 
-.howtouse li {
+.usuage li {
 	list-style: decimal;
 }
 
@@ -37,7 +37,7 @@ h1 {
 	padding: 10px;
 	padding-top: 0;
 	background-color: rgba(200, 200, 200, 0.5);
-	font-size: 0.9em;
+	/* font-size: 0.9em; */
 	float: left;
 }
 
@@ -50,6 +50,7 @@ h1 {
 	padding-right: 4px;
 	padding-bottom: 2px;
 	text-align: center;
+	margin: auto;
 	cursor: pointer;
 	background-color: rgb(9, 74, 178);
 }
@@ -121,5 +122,28 @@ h1 {
 img {
 	height: auto;
 	max-width: 70%;
+}
 
+.tooltip {
+    /* position: relative; */
+    /* display: inline-block; */
+    border-bottom: 1px dotted black; /* 悬停元素上显示点线 */
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: auto;
+    background-color: black;
+    color: #fff;
+    /* text-align: center; */
+    border-radius: 6px;
+    padding: 5px 5px;
+
+    /* 定位 */
+    position: absolute;
+    z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
 }
