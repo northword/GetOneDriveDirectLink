@@ -158,6 +158,7 @@ img {
 	}
 	.mask-list {
 		height: auto;
+		min-width: 50px;
 	}
 	img {
 		max-width: 100%;
@@ -165,4 +166,11 @@ img {
 	.outcontent {
 		height: auto;
 	}
+}
+
+.github  {
+	margin: 0px 3px;
+}
+.github img {
+	width: 25px;
 }
