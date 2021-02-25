@@ -158,7 +158,7 @@ img {
 	}
 	.mask-list {
 		height: auto;
-		min-width: 50px;
+		min-height: 50px;
 	}
 	img {
 		max-width: 100%;
