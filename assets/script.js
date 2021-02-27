@@ -127,7 +127,8 @@ function load_mask_local() //从空白加载设置
 	) //没有掩码数据，初始化默认配置。
 	{
 		addNewMask("应用/Picture Share/Image","https://storage.live.com/items/${file.id}?authkey=AHAx3GOYEKGqm8I");
-		addNewMask("Markdown","[${file.name}](https://storage.live.com/items/${file.id}?authkey=AHAx3GOYEKGqm8I)");
+		addNewMask("Share/Share2Public","https://storage.live.com/items/${file.id}?authkey=AC7Hkvf2Y3FQ7o8")
+		// addNewMask("Markdown","[${file.name}](https://storage.live.com/items/${file.id}?authkey=AHAx3GOYEKGqm8I)");
 		addNewMask("-------------------------","-------------------------");
 		// addNewMask("普通外链","http://storage.live.com/items/${file.id}:/${file.name}");
 		// addNewMask("最短链接","http://storage.live.com/items/${file.id}");
