@@ -6,26 +6,31 @@
 	<title>获取OneDrive直链</title>
 	<link rel="icon" href="assets/images/icon.png" type="image/x-png" />
 	<link rel="shortcut icon" href="assets/images/icon.png" type="image/x-png" />
-	<link rel="stylesheet" type="text/css" href="assets/style.css" >
+	<link rel="stylesheet" type="text/css" href="assets/style.css">
 	<script type="text/javascript" src="https://js.live.net/v7.2/OneDrive.js"></script>
 	<!--<script type="text/javascript" src="assets/OneDrive.js"></script>-->
 	<script type="text/javascript" src="assets/script.js"></script>
 	<!--<script type="text/javascript" src="assets/debug.js"></script>-->
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
 </head>
 
 <body>
 	<div class="wrap">
 		<div class="header">
-			<h1>获取 OneDrive 直链<a class="github" title="Github Repo" href="https://github.com/northword/GetOneDriveDirectLink"><img src="assets/images/github.svg" alt="GitHub 地址" width="25px"></a>
+			<h1>获取 OneDrive 直链<a class="github" title="Github Repo"
+					href="https://github.com/northword/GetOneDriveDirectLink"><img src="assets/images/github.svg"
+						alt="GitHub 地址" width="25px"></a>
 			</h1>
 			<p>本应用的目的是为了批量获取 OneDrive 直链，方便在其他站点外链。
-		</p></div>
+			</p>
+		</div>
 		<div class="usuage">
 			<h3>使用方法(最简向)</h3>
 			<ul>
 				<li>点击下面的<span class="openbtn" title="不是点我，真的按钮在下面呢"
-						onclick="alert('不是点我，真的按钮在下面呢')">从OneDrive创建分享链接</span>按钮，等待打开新窗口（须<span class="tooltip">科学上网<span class="tooltiptext">我认为这是一个科研人所必备的技能。</span></span>）。</li>
+						onclick="alert('不是点我，真的按钮在下面呢')">从OneDrive创建分享链接</span>按钮，等待打开新窗口（须<span
+						class="tooltip">科学上网<span class="tooltiptext">我认为这是一个科研人所必备的技能。</span></span>）。</li>
 				<li>在新窗口中登陆 OneDrive 对应的账户并授予需要的权限。</li>
 				<li>选择需要获取直链的文件（同一文件夹内可多选），点击打开。</li>
 				<li>掩码格式选择 1drv.ws 项目，输出面板内会自动生成其链接（生成的链接无须科学上网即可访问）。</li>
@@ -68,40 +73,98 @@
 		<div class="FQ">
 			<h3>隐私声明</h3>
 			<p>使用微软官方API，这里不会得到你的账号密码和其他用户资料。<br>
-				目前仅申请了Files.Read、Files.Read.Selected两个权限，API只会返回用户选择的文件的信息，不会获得其他内容。
+				目前仅申请了Files.Read、Files.Read.Selected两个权限，API只会返回用户选择的文件的信息，不会获得其他内容。</br>
+				纯前端应用，所有数据均缓存在本地，无后端留存。
 			</p>
 			<h3>F&amp;Q</h3>
-			<h5 id="1drv">Q1：额外创建分享链接 是什么？</h5>
+			<h5 id="way">几种方式如何选择以及如何操作？</h5>
+			<p><b>前了解到的几种方式有（大致描述）：</b></p>
+			<ol start=''>
+				<li>【官方的】 使用 OneDrive 官方的分享链接。</li>
+				<li>【对应输入面板<code>从OneDrive选择文件</code>按钮】 使用 OneDrive-SDK 以代码流进行身份验证，以
+					<code>query</code> 方式请求，调用 <code>FilePicker</code>
+					选取/上传文件，并获取其链接（形如<code>https://storage.live.com/items/${file.id}</code>）。此方案与云之幻开发的UWP应用“Picture
+					Share”效果一致。
+				</li>
+				<li>【对应输入面板<code>从OneDrive创建分享链接</code>按钮】 使用 OneDrive-SDK
+					以代码流进行身份验证，以<code>share</code>方式请求，调用 <code>FilePicker</code>
+					选取/上传文件，并获取其链接，配合 1drv.ws 项目使用。</li>
+				<li>【对应另一个项目】 使用 OneDrive-SDK 以令牌流进行身份验证，以 <code>share</code> 方式请求，使用上传文件 api
+					进行上传，并获取其链接。</li>
+			</ol>
+			<p><b>优劣：</b></p>
+			<figure>
+				<table>
+					<thead>
+						<tr>
+							<th>方式</th>
+							<th>需要登陆</th>
+							<th>选取文件是否需要翻墙</th>
+							<th>是否需要authkey</th>
+							<th>分享链接是否需要翻墙</th>
+							<th><code>由我共享</code>页</th>
+							<th>其他</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>1</td>
+							<td>是</td>
+							<td>否</td>
+							<td>否</td>
+							<td>是</td>
+							<td>看你分享的文件夹还是文件</td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td>2</td>
+							<td>是</td>
+							<td>是</td>
+							<td>是</td>
+							<td>否</td>
+							<td>仅文件夹</td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td>3</td>
+							<td>是</td>
+							<td>是</td>
+							<td>否</td>
+							<td>否</td>
+							<td>文件</td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td>4</td>
+							<td>是</td>
+							<td>否</td>
+							<td>否</td>
+							<td>否</td>
+							<td>文件</td>
+							<td>仅能上传，不能选择已有文件</td>
+						</tr>
+					</tbody>
+				</table>
+			</figure>
+			<p><b>步骤：</b></p>
+			<p>
+				第一种：不再赘述</br>
+				第二种：登录，选择文件后，获取文件所在文件夹的(<a href="#authkey" >通行许可代码authkey</a>)，添加掩码<code>https://storage.live.com/items/${file.id}?authkey=你的通行许可代码</code>。</br>
+				第三种：见最开始的方法步骤。</br>
+				第四种：见 github.com/harrisoff/onedrive 。
+			</p>
+
+			<h5 id="1drv">额外创建分享链接 是什么？</h5>
 			<p>1drv.ws 是另一个第三方项目 <a href="https://github.com/aploium/OneDrive-Direct-Link"> The OneDrive Direct Link
 					Helper</a>，通过获取文件的下载链接来达到外链目的。<br>
-				只需要将 1drv.<strong>m</strong>s 修改为 1drv.<strong>w</strong>s 即可。
+				只需要将 <code>1drv.ms</code> 修改为 <code>1drv.ws</code> 即可。
 				因为需要后端实现对 onedrive.live.com 的重定向，因此本纯前端网页程序无法内置。
 				最终重定向地址类似于“官方图片下载直连”</p>
 			<p>优点：直接使用生成的分享链接，不需要先嵌入，再添加 authkey。据说是香港的CDN，比较快。</p>
-			<p>缺点：API 必须使用 share 模式来读取数据，因为无法直接选择文件夹，因此 OneDrive “ <a
-					href="https://onedrive.live.com/?qt=sharedby">由我共享</a> ”内会生成大量项目。<br>
+			<p>缺点：API 必须使用 share 模式来读取数据，因为无法直接选择文件夹，因此 OneDrive <code> <a
+					href="https://onedrive.live.com/?qt=sharedby">由我共享</a> </code>内会生成大量项目。<br>
 				该方式得到的是下载链接，并不能直接在浏览器内预览文件。</p>
-			<h5>如何书写掩码？</h5>
-			<p>2020年3月25日新增，并<strong>推荐使用</strong>ES6原生<a
-					href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/template_strings">模板字符串</a>
-				${表达式}
-				书写方式。
-				“file”表示该文件信息，“index”表示在获取列表中的序号，具体的JSON对象会在获取数据后发送到控制台（或查看全局变量 redata ），需要更多信息的的自己去看吧。</p>
-			<p>旧方法目前仍可用，但因为是自己实现的，因此不再推荐。旧方法请参考 <a
-					href="https://github.com/Mapaler/PixivUserBatchDownload/wiki/%E6%8E%A9%E7%A0%81"
-					target="_blank">掩码用法</a> 底部的高级用法。
-				旧方法的掩码转新写法一般简单把前面的 % 修改为 $即可，但若掩码内使用了 \ 转义符的需要去掉，掩码外需要使用 \ 和 ` 的则需加上转义符。
-				并且如果使用了变量定义，需要将其修改为闭包的函数表达式“(function(可选接收传入参数){任何代码 return 输出字符串;})(可选传入外部参数)”</p>
-			<h5>为什么这个应用必须要在https下运行？</h5>
-			<p>微软的规定，非https只返回错误，我也不想。</p>
-			<h5>为什么要把文件放在“公开”文件夹？</h5>
-			<p>新版OneDrive只有“公开”文件夹（含子文件夹）的权限才是“所有人”，其他文件夹分享必须登录才能看到，无法成功外链。</p>
-			<h5>OneDrive窗口里如何全选？</h5>
-			<p>磁贴模式下：选中第一个，拉到底下，按住Shift点击最后一个，中间的就会自动选上了。</p>
-			<p>列表模式下：点左上角那个选中全部的复选框就行了。</p>
-			<h5>如何收回我授予的权限？</h5>
-			<p>访问微软账户 <a href="https://account.live.com/consent/Manage" target="_blank">你已授予访问权限的应用和服务</a> 删除即可。</p>
-			<h5>如何获取authkey（通行许可代码）？</h5>
+			<h5 id="authkey">如何获取authkey（通行许可代码）？</h5>
 			<p>选中需要共享的文件夹，点击嵌入<br>
 				<img src="assets/images/Image 29.png" alt="点击嵌入" /><br>
 				在右方复制authkey及其值。将来这个文件夹内的文件及子文件夹都只需要这同一个通行码。<br>
@@ -111,11 +174,38 @@
 				把authkey及其值加入到x外链地址掩码最后面，作为链接的参数，格式为“?authkey=xxxxxxx”<br>
 				<img src="assets/images/Image 32.png" alt="修改掩码" /><br>
 			</p>
+
+			<h5>如何书写掩码？</h5>
+			<p>2020年3月25日新增，并<strong>推荐使用</strong>ES6原生<a
+					href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/template_strings">模板字符串</a><code>${表达式}</code>书写方式。
+				<code>file</code>表示该文件信息，<code>index</code>表示在获取列表中的序号，具体的 JSON 对象会在获取数据后发送到控制台（或查看全局变量 redata
+				），需要更多信息的的自己去看吧。
+			</p>
+			<p>旧方法目前仍可用，但因为是自己实现的，因此不再推荐。旧方法请参考 <a
+					href="https://github.com/Mapaler/PixivUserBatchDownload/wiki/%E6%8E%A9%E7%A0%81"
+					target="_blank">掩码用法</a> 底部的高级用法。
+				旧方法的掩码转新写法一般简单把前面的 <code>%</code> 修改为 <code>$</code> 即可，但若掩码内使用了 <code>\</code> 转义符的需要去掉，掩码外需要使用
+				<code>\</code> 和 <code>`</code> 的则需加上转义符。
+				并且如果使用了变量定义，需要将其修改为闭包的函数表达式<code>(function(可选接收传入参数){任何代码 return 输出字符串;})(可选传入外部参数)</code>
+			</p>
+			<h5>为什么这个应用必须要在https下运行？</h5>
+			<p>微软的规定，非https只返回错误，我也不想。</p>
+			<h5>为什么要把文件放在“公开”文件夹？</h5>
+			<p>新版OneDrive只有“公开”文件夹（含子文件夹）的权限才是“所有人”，其他文件夹分享必须登录才能看到，无法成功外链。</p>
+			<h5>OneDrive窗口里如何全选？</h5>
+			<p>磁贴模式下：选中第一个，拉到底下，按住Shift点击最后一个，中间的就会自动选上了。</p>
+			<p>列表模式下：点左上角那个选中全部的复选框就行了。</p>
+			<h5>如何收回我授予的权限？</h5>
+			<p>访问微软账户 <a href="https://account.live.com/consent/Manage" target="_blank">你已授予访问权限的应用和服务</a> 删除即可。</p>
 		</div>
 		<div class="footer">
 			<h3>开源声明</h3>
-			<p>本站使用开源的 <a
-					href="https://github.com/Mapaler/GetOneDriveDirectLink">GetOneDriveDirectLink</a> 程序。程序遵循 <a href="https://github.com/northword/GetOneDriveDirectLink/blob/main/LICENSE" title="GNU Lesser General Public License v3.0">GPL v3</a> 协议，版权归 Mapaler 所有。</br> 页面被 Northword 修改，修改后的代码开源在 <a href="https://github.com/northword/GetOneDriveDirectLink">github.com/northword/GetOneDriveDirectLink</a> 。
+			<p>本站使用开源的 <a href="https://github.com/Mapaler/GetOneDriveDirectLink">GetOneDriveDirectLink</a> 程序。程序遵循 <a
+					href="https://github.com/northword/GetOneDriveDirectLink/blob/main/LICENSE"
+					title="GNU Lesser General Public License v3.0">GPL v3</a> 协议，版权归 Mapaler 所有。</br> 页面被 Northword
+				修改，修改后的代码开源在 <a
+					href="https://github.com/northword/GetOneDriveDirectLink">github.com/northword/GetOneDriveDirectLink</a>
+				。
 			</p></br>
 		</div>
 	</div>
